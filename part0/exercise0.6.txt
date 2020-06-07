@@ -1,0 +1,10 @@
+title Exercise 0.6
+
+Browser -> Server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note right of Server 
+Save the new note 
+end note
+Server --> Browser: 201 - Created note - returns the JSON of the new note
+note left of Browser
+The Browser add the new note to the list of notes in site
+end note

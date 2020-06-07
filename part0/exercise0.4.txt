@@ -1,0 +1,27 @@
+title Exercise 0.4
+
+note left of Browser 
+User write the note and click "Send"
+end note
+Browser -> Server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+note right of  Server 
+Save the new note
+end note
+Server --> Browser: 302 - Redirection to /notes
+note left of Browser 
+The Broser executes the redirection
+end note 
+Browser -> Server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+Server --> Browser: HTML code
+Browser -> Server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+Server --> Browser: CSS code
+Browser -> Server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+Server --> Browser: JS code
+note left of Browser
+Executes the JS code
+end note
+Browser -> Server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+Server --> Browser: JSON data
+note left of Browser
+Render the notes
+end note

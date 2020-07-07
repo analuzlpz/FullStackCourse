@@ -11,10 +11,22 @@ const random_function = (max) => {
   return Math.floor(Math.random() * max)
 }
 
+const better_anecdote = (points) => {
+  let better = 0
+  for(let i = 1; i < 6; i++)
+  {
+    if (points[i] > points[better]){
+      better = i
+    }
+  }
+  return better
+}
+
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0})
+  const [better, setBetter] = useState(0)
   
   const sum_vote = (selected, points) => {
     const points_copy = {...points}
@@ -25,10 +37,13 @@ const App = (props) => {
 
   return (
     <div>      
+      <h1>Anecdote of the day.</h1>
       <p>{props.anecdotes[selected]}</p>
       <p>has {points[selected]}.</p>
-      <Button handleClick={() => { sum_vote(selected, points)}} text="Vote"/>
+      <Button handleClick={() => { sum_vote(selected, points); setBetter(better_anecdote(points))}} text="Vote"/>
       <Button handleClick={() => { setSelected(random_function(6))}} text="Next Anecdote"/>
+      <h1>Anecdote with most votes.</h1>
+      <p>{props.anecdotes[better]}</p>
     </div>
   )
 }
